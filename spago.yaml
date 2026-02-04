@@ -1,0 +1,29 @@
+package:
+  name: hylograph-optics
+  description: "Optics (lenses, prisms, traversals) for Hylograph data structures"
+  publish:
+    version: 0.1.0
+    license: MIT
+    location:
+      githubOwner: afcondon
+      githubRepo: purescript-hylograph-optics
+  dependencies:
+    - arrays
+    - control
+    - foldable-traversable
+    - lists
+    - maybe
+    - ordered-collections
+    - prelude
+    - profunctor-lenses
+    - tree-rose
+    - hylograph-graph
+    - tuples
+    - free
+
+workspace:
+  packageSet:
+    registry: 67.0.1
+  extraPackages:
+    hylograph-graph:
+      path: ../purescript-hylograph-graph
