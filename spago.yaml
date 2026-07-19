@@ -20,4 +20,6 @@ package:
     - tree-rose: ">=4.0.2 <5.0.0"
 
 workspace:
+  packageSet:
+    registry: 77.13.1
   extraPackages: {}
