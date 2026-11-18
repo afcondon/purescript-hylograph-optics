@@ -4,7 +4,7 @@ Optics (lenses, prisms, traversals) for Hylograph data structures.
 
 ## Overview
 
-Provides optics for navigating and transforming tree and graph data structures used in Hylograph visualizations. Built on `profunctor-lenses`.
+Provides optics for navigating and transforming rose trees (`Data.Tree` from `tree-rose`) and `hylograph-graph` graphs. Built on `profunctor-lenses`. These are optics over the *data* a visualization is made from; there are none over HATS trees.
 
 ## Installation
 
@@ -21,13 +21,21 @@ spago install hylograph-optics
 ## Example
 
 ```purescript
-import Hylograph.Optics.Tree (nodeValue, children)
+import Data.Lens (over, view, toListOf)
+import Data.Tree (Tree)
+import Hylograph.Optics.Tree (_root, _leaves)
 
--- Focus on root value
-root = view nodeValue myTree
+-- Focus on the root value
+rootLabel :: Tree String -> String
+rootLabel = view _root
 
--- Modify all children
-updated = over children (map transform) myTree
+-- Modify every leaf
+shout :: Tree String -> Tree String
+shout = over _leaves (_ <> "!")
+
+-- Collect the leaves
+leaves :: Tree String -> List String
+leaves = toListOf _leaves
 ```
 
 ## Part of Hylograph
